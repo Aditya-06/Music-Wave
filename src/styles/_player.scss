@@ -1,6 +1,6 @@
 .player {
   min-height: 30vh;
-  background-color: lightgreen;
+  // background-color: lightgreen;
   display: flex;
   align-items: center;
   flex-flow: column nowrap;
@@ -10,12 +10,11 @@
 .time-control {
   width: 50%;
   display: flex;
-  background-color: lightblue;
+  // background-color: lightblue;
   align-items: center;
 
   input {
     width: 100%;
-    padding: 3rem 4rem;
   }
 
   p {
@@ -31,7 +30,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem;
+  padding: 1rem;
   svg {
     cursor: pointer;
   }
