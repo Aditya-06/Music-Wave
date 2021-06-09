@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { playAudio } from "../util";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -57,6 +57,10 @@ const Player = ({
     if (isPlaying) audioref.current.play();
   };
 
+  const trackAnim = {
+    transform: `translateX(${songInfo.animationPercentage}%)`,
+  };
+
   // Format time from seconds -> minutes
   const getTime = (time) => {
     return (
@@ -99,13 +103,22 @@ const Player = ({
     <div className="player">
       <div className="time-control">
         <p>{getTime(songInfo.currentTime)}</p>
-        <input
-          min={0}
-          max={songInfo.duration || 0}
-          value={songInfo.currentTime}
-          onChange={dragHandler}
-          type="range"
-        />
+
+        <div
+          style={{
+            background: `linear-gradient(to right, ${currentSong.color[0]},${currentSong.color[1]})`,
+          }}
+          className="track"
+        >
+          <input
+            value={songInfo.currentTime}
+            type="range"
+            max={songInfo.duration || 0}
+            min={0}
+            onChange={dragHandler}
+          />
+          <div style={trackAnim} className="animate-track"></div>
+        </div>
         <p>{getTime(songInfo.duration)}</p>
       </div>
       <div className="play-control">

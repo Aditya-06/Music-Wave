@@ -2,13 +2,10 @@ import React, { useState } from "react";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import MenuIcon from "@material-ui/icons/Menu";
-import AccountCircle from "@material-ui/icons/AccountCircle";
-import MoreIcon from "@material-ui/icons/MoreVert";
 import { Button, Container, Drawer } from "@material-ui/core";
 // import WavesIcon from '@material-ui/icons/Waves';
 
@@ -137,7 +134,7 @@ const Navbar = ({ setShowLib, showLib }) => {
     </div>
   );
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const [, setMobileMoreAnchorEl] = React.useState(null);
 
   const isMenuOpen = Boolean(anchorEl);
 

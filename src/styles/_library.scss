@@ -77,3 +77,10 @@ h4 {
   visibility: hidden;
   left: -22.5rem;
 }
+
+//mobiel-responsive
+@media screen and (max-width: 768px) {
+  .library {
+    width: 100%;
+  }
+}
