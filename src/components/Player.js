@@ -2,10 +2,8 @@ import React, {useRef, useState} from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faPlay, faAngleLeft, faAngleRight, faPause} from '@fortawesome/free-solid-svg-icons'
 
-const Player = ({ currentSong, isPlaying, setIsPlaying }) => {
+const Player = ({ currentSong, isPlaying, setIsPlaying, audioref }) => {
 
-    // Reference the audio tag
-    const audioref = useRef(null)
 
     // Set information about the song in state
     const [songInfo, setSongInfo] = useState({
@@ -32,6 +30,7 @@ const Player = ({ currentSong, isPlaying, setIsPlaying }) => {
         setSongInfo({...songInfo, currentTime: current, duration})
     }
 
+    // Adjust Time
     const dragHandler = (e) => {
         audioref.current.currentTime = e.target.value;
         setSongInfo({ ...songInfo, currentTime: e.target.value })

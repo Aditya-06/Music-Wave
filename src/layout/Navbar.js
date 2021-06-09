@@ -10,6 +10,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import { Button, Container, Drawer } from "@material-ui/core";
+// import WavesIcon from '@material-ui/icons/Waves';
 
 import clsx from "clsx";
 import List from "@material-ui/core/List";
@@ -22,7 +23,7 @@ import MailIcon from "@material-ui/icons/Mail";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
-    position: "relative",
+    position: "fixed",
     zIndex: theme.zIndex.drawer + 1,
   },
   grow: {
@@ -44,17 +45,17 @@ const useStyles = makeStyles((theme) => ({
     width: "auto",
   },
   search: {
-    position: "relative",
+    position: "fixed",
     borderRadius: theme.shape.borderRadius,
     backgroundColor: fade(theme.palette.common.white, 0.15),
     "&:hover": {
       backgroundColor: fade(theme.palette.common.white, 0.25),
     },
     marginRight: theme.spacing(2),
-    marginLeft: 0,
+    marginright: 0,
     width: "100%",
     [theme.breakpoints.up("sm")]: {
-      marginLeft: theme.spacing(3),
+      marginright: theme.spacing(3),
       width: "auto",
     },
   },
@@ -64,7 +65,7 @@ const useStyles = makeStyles((theme) => ({
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+    paddingright: `calc(1em + ${theme.spacing(4)}px)`,
     transition: theme.transitions.create("width"),
     width: "100%",
     [theme.breakpoints.up("md")]: {
@@ -89,7 +90,7 @@ const Navbar = () => {
   const classes = useStyles();
 
   const [state, setState] = useState({
-    left: false,
+    right: false,
   });
 
   const toggleDrawer = (anchor, open) => (event) => {
@@ -209,12 +210,12 @@ const Navbar = () => {
 
   return (
     <div className={classes.grow}>
-      <AppBar position="static" color="secondary">
+      <AppBar position="fixed" color="primary">
         <Container>
           <Toolbar>
-            <React.Fragment key={"left"}>
+            <React.Fragment key={"right"}>
               <Button
-                onClick={toggleDrawer("left", true)}
+                onClick={toggleDrawer("right", true)}
                 className={classes.menuButton}
                 color="inherit"
                 edge="start"
@@ -223,11 +224,11 @@ const Navbar = () => {
                 <MenuIcon />
               </Button>
               <Drawer
-                anchor={"left"}
-                open={state["left"]}
-                onClose={toggleDrawer("left", false)}
+                anchor={"right"}
+                open={state["right"]}
+                onClose={toggleDrawer("right", false)}
               >
-                {list("left")}
+                {list("right")}
               </Drawer>
             </React.Fragment>
             <Typography className={classes.title} variant="h5" noWrap>
