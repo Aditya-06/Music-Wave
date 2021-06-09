@@ -1,11 +1,12 @@
 .player {
-  min-height: 30vh;
+  min-height: 20vh;
   // background-color: lightgreen;
   display: flex;
   align-items: center;
   flex-flow: column nowrap;
-  justify-content: space-evenly;
+  justify-content: center;
   margin-top: 0;
+  padding: 0;
 }
 
 .time-control {

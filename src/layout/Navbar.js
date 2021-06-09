@@ -86,7 +86,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Navbar = () => {
+const Navbar = ({ setShowLib, showLib }) => {
   const classes = useStyles();
 
   const [state, setState] = useState({
@@ -140,11 +140,6 @@ const Navbar = () => {
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
   const isMenuOpen = Boolean(anchorEl);
-  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
-  const handleProfileMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
 
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
@@ -155,9 +150,6 @@ const Navbar = () => {
     handleMobileMenuClose();
   };
 
-  const handleMobileMenuOpen = (event) => {
-    setMobileMoreAnchorEl(event.currentTarget);
-  };
   const menuId = "primary-search-account-menu";
   const renderMenu = (
     <Menu
@@ -171,40 +163,6 @@ const Navbar = () => {
     >
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-    </Menu>
-  );
-
-  const mobileMenuId = "primary-search-account-menu-mobile";
-  const renderMobileMenu = (
-    <Menu
-      anchorEl={mobileMoreAnchorEl}
-      anchorOrigin={{ vertical: "top", horizontal: "right" }}
-      id={mobileMenuId}
-      keepMounted
-      transformOrigin={{ vertical: "top", horizontal: "right" }}
-      open={isMobileMenuOpen}
-      onClose={handleMobileMenuClose}
-    >
-      <MenuItem>
-        <Button>Login</Button>
-      </MenuItem>
-      <MenuItem>
-        <Button>Login</Button>
-      </MenuItem>
-      <MenuItem>
-        <Button>Login</Button>
-      </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <AccountCircle />
-        </IconButton>
-        <p>Profile</p>
-      </MenuItem>
     </Menu>
   );
 
@@ -231,27 +189,31 @@ const Navbar = () => {
                 {list("right")}
               </Drawer>
             </React.Fragment>
-            <Typography className={classes.title} variant="h5" noWrap>
+            <Typography
+              className={classes.title}
+              variant="h5"
+              noWrap
+              style={{ flex: 10 }}
+            >
               Wavy
             </Typography>
 
+            <Button
+              variant="contained"
+              color="secondary"
+              className={classes.lib}
+              onClick={() => setShowLib(!showLib)}
+            >
+              Library
+            </Button>
+
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}></div>
-            <div className={classes.sectionMobile}>
-              <IconButton
-                aria-label="show more"
-                aria-controls={mobileMenuId}
-                aria-haspopup="true"
-                onClick={handleMobileMenuOpen}
-                color="inherit"
-              >
-                <MoreIcon />
-              </IconButton>
-            </div>
+            <div className={classes.sectionMobile}></div>
           </Toolbar>
         </Container>
       </AppBar>
-      {renderMobileMenu}
+
       {renderMenu}
     </div>
   );
